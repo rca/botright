@@ -34,7 +34,7 @@ from playwright.async_api import Route as PlaywrightRoute
 from playwright.async_api import Worker as PlaywrightWorker
 from recognizer.agents.playwright import AsyncChallenger
 
-from botright.modules import Faker, hcaptcha  # , geetest
+from botright.modules import Faker #, hcaptcha  # , geetest
 
 # fmt: on
 
@@ -97,7 +97,7 @@ class Page(PlaywrightPage):
         else:
             self._keyboard = Keyboard(page.keyboard, self)
         self.cdp: Optional[PlaywrightCDPSession] = None
-        self.hcaptcha_solver = hcaptcha.hCaptcha(browser, self)
+        #self.hcaptcha_solver = hcaptcha.hCaptcha(browser, self)
         self.recaptcha_solver = AsyncChallenger(self)
 
         # Aliases
