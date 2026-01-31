@@ -7,7 +7,7 @@ from tempfile import TemporaryDirectory, gettempdir
 from typing import Any, Dict, List, Optional
 
 import browsers
-import hcaptcha_challenger as solver
+#import hcaptcha_challenger as solver
 import loguru
 from async_class import AsyncObject
 from chrome_fingerprints import AsyncFingerprintGenerator
