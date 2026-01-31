@@ -150,7 +150,7 @@ class Botright(AsyncObject):
         """
 
         # Init local-side of the ModelHub
-        solver.install(upgrade=True)
+        # solver.install(upgrade=True)
         # Starting Playwright
         if use_undetected_playwright:
             # (TODO: TEMP)
