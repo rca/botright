@@ -47,6 +47,8 @@ async def new_browser(botright: Botright, proxy: ProxyManager, faker: Faker, fla
     Returns:
         BrowserContext: A new browser context with the specified configurations.
     """
+    temp_dir_path = launch_arguments.pop("temp_dir_path", None)
+
     if botright.mask_fingerprint:
         fingerprint = faker.fingerprint
         parsed_launch_arguments = {
@@ -77,12 +79,13 @@ async def new_browser(botright: Botright, proxy: ProxyManager, faker: Faker, fla
             **launch_arguments,
         }  # self.faker.locale
 
-    if sys.version_info.minor >= 10:
-        temp_dir = TemporaryDirectory(prefix="botright-", ignore_cleanup_errors=True)
-    else:
-        temp_dir = TemporaryDirectory(prefix="botright-")
-    temp_dir_path = temp_dir.name
-    botright.temp_dirs.append(temp_dir)
+    if not temp_dir_path:
+        if sys.version_info.minor >= 10:
+            temp_dir = TemporaryDirectory(prefix="botright-", ignore_cleanup_errors=True)
+        else:
+            temp_dir = TemporaryDirectory(prefix="botright-")
+        temp_dir_path = temp_dir.name
+        botright.temp_dirs.append(temp_dir)
 
     # Spawning a new Context for more options
     if proxy.browser_proxy:
