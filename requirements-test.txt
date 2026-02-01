@@ -7,4 +7,4 @@ types-setuptools==69.5.0.20240415
 twisted==24.3.0
 playwright==1.42.0
 black==24.4.0
-isort==5.13.2
+isort==7.0.0
